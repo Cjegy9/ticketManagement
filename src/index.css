@@ -2,3 +2,12 @@
     display: flex;
     justify-content: center;
 }
+
+.header-menu {
+  border-radius: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.side-nav {
+  border-radius: 0px !important;
+}

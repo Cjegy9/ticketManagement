@@ -15,12 +15,12 @@ const App = () => {
 
   const handleItemClick = (e, {name}) => {
     setactiveItem(name);
-    navigate(`/${name}`);
+    navigate(`/${name === 'home' ? '' : name}`);
   };
 
   return (
     <div style={{ width: '100%' }}>
-      <Menu>
+      <Menu color="grey" inverted className="header-menu">
         <Menu.Item>
           <Input icon='search' placeholder='Search...' />
         </Menu.Item>
@@ -42,11 +42,24 @@ const App = () => {
           />
         </Menu.Menu>
       </Menu>
-      <RRoutes>
-        <Route path="home" element={<Home/>} />
-        <Route path="about" element={<About/>} />
-        <Route path="login" element={<Login/>} />
-      </RRoutes>
+      <div style={{ display: 'flex' }}>
+        <div style={{ height: '100%'}}>
+          <Menu color="grey" inverted vertical className="side-nav">
+            <Menu.Item
+              name="test"
+              active={false}
+              onClick={() => console.log('test')}
+            />
+          </Menu>
+        </div>
+        <div style={{ padding: 10 }}>
+          <RRoutes>
+            <Route path="/" element={<Home/>} />
+            <Route path="about" element={<About/>} />
+            <Route path="login" element={<Login/>} />
+          </RRoutes>
+        </div>
+      </div>
     </div>
   );
 }

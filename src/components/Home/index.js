@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 const Home = () => {
 
     return (
-      <div>
+      <div style={{ height: 900}}>
         home Page
       </div>
     );
