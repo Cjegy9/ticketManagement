@@ -2,10 +2,14 @@ const express = require('express');
 const app = express();
 const port = 3002;
 const { default: mongoose } = require('mongoose');
+const dotenv = require('dotenv');
 
 const { User } = require('./Models/User');
 
-const db = 'mongodb+srv://ceyster:mr4vwsoMn1ZnXtEs@eytracker-cluser0.0cra9qj.mongodb.net/eytracker?retryWrites=true&w=majority';
+dotenv.config();
+
+const db = process.env.CONNECTION_URL;
+console.log(process.env.CONNECTION_URL)
 mongoose
   .connect(db)
   .then(() => console.log("Connection Successful"))
