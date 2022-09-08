@@ -5,9 +5,10 @@ import {Routes as RRoutes, Route, useNavigate } from 'react-router-dom';
 
 import { Input, Menu } from 'semantic-ui-react'
 
-import Home from './components/Home';
-import About from './components/About';
-import Login from './components/Login';
+import Home from './pages/Home';
+import About from './pages/About';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 const App = () => {
   const [activeItem, setactiveItem] = useState('home');
@@ -21,6 +22,9 @@ const App = () => {
   return (
     <div style={{ width: '100%' }}>
       <Menu color="grey" inverted className="header-menu">
+        <Menu.Item>
+          <span style={{ width: 178 }}>&nbsp;</span>
+        </Menu.Item>
         <Menu.Item>
           <Input icon='search' placeholder='Search...' />
         </Menu.Item>
@@ -40,23 +44,27 @@ const App = () => {
             active={activeItem === 'login'}
             onClick={handleItemClick}
           />
+          <Menu.Item
+            name='profile'
+            active={activeItem === 'profile'}
+            onClick={handleItemClick}
+          />
         </Menu.Menu>
       </Menu>
       <div style={{ display: 'flex' }}>
-        <div style={{ height: '100%'}}>
-          <Menu color="grey" inverted vertical className="side-nav">
-            <Menu.Item
-              name="test"
-              active={false}
-              onClick={() => console.log('test')}
-            />
-          </Menu>
-        </div>
+        <Menu color="grey" inverted vertical className="side-nav">
+          <Menu.Item
+            name="test"
+            active={false}
+            onClick={() => console.log('test')}
+          />
+        </Menu>
         <div style={{ padding: 10 }}>
           <RRoutes>
             <Route path="/" element={<Home/>} />
             <Route path="about" element={<About/>} />
             <Route path="login" element={<Login/>} />
+            <Route path="profile" element={<Profile/>} />
           </RRoutes>
         </div>
       </div>

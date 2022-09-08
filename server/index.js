@@ -4,7 +4,7 @@ const port = 3002;
 const { default: mongoose } = require('mongoose');
 const dotenv = require('dotenv');
 
-const { User } = require('./Models/User');
+const User = require('./Routes/User');
 
 dotenv.config();
 
@@ -27,14 +27,7 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
-app.get('/', (req, res) => {
-  User.find((err, results) => {
-    if (err) return console.log(err);
-    res.send(results);
-  })
-});
-
-app.post('')
+app.use('/user', User);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
