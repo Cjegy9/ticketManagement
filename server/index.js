@@ -5,6 +5,7 @@ const { default: mongoose } = require('mongoose');
 const dotenv = require('dotenv');
 
 const User = require('./Routes/User');
+const Ticket = require('./Routes/Ticket');
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 app.use('/user', User);
+app.use('/ticket', Ticket);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
