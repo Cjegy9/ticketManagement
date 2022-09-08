@@ -6,7 +6,7 @@ import axios from 'axios';
 const Home = () => {
 
   const fetchHello = () => {
-    axios.get("http://localhost:3002/")
+    axios.get("http://localhost:3002/user")
       .then(res => {
         const data = res.data.foo;
         console.log(data);
