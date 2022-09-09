@@ -1,9 +1,10 @@
 import React, { memo, useState, useEffect } from 'react';
 import axios from 'axios';
-import { Segment } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 
 const TicketDisplay = () => {
   const [tickets, setTickets] = useState([]);
+  const [finished, setFinished] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3002/ticket")
@@ -13,14 +14,29 @@ const TicketDisplay = () => {
   }, []);
 
   return (
-    <div>
-      {tickets.map((ticket) => (
-        <Segment raised>
-          {ticket.description}
-        </Segment>
+    <div style={{ display: 'flex' }}>
+      <Card.Group>
+      {tickets.map((ticket, idx) => (
+        <Card key={ticket._id} color={ticket.finished ? 'green' : 'red'}>
+          <Card.Content>
+            <Card.Header>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <React.Fragment>{ticket.name}</React.Fragment>
+                <span onClick={() => setFinished([...finished, ticket._id])}>
+                  <Icon color={finished.includes(ticket._id) ? 'green' : ''} name={finished.includes(ticket._id) ? 'check square' : 'square outline'} link />
+                </span>
+              </div>
+            </Card.Header>
+            <Card.Meta>Colin Eyster</Card.Meta>
+            <Card.Description>{ticket.description}</Card.Description>
+          </Card.Content>
+        </Card>
       ))}
+      </Card.Group>
     </div>
   );
 };
+
+
 
 export default memo(TicketDisplay);

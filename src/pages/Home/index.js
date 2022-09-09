@@ -9,7 +9,9 @@ const Home = () => {
 
   return (
     <div style={{ height: window.innerHeight, display: 'flex', flexDirection: 'column'}}>
-      <TicketCreation />
+      <div style={{ width: 500, marginBottom: 20 }}>
+        <TicketCreation />
+      </div>
       <TicketsDisplay />
     </div>
   );
