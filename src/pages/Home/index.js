@@ -1,6 +1,6 @@
 // src/components/App/index.js
 import React, { memo } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Input, Form, TextArea } from 'semantic-ui-react';
 import axios from 'axios';
 
 const Home = () => {
@@ -25,11 +25,17 @@ const Home = () => {
   }
 
   return (
-    <div style={{ height: window.innerHeight}}>
-      home Page
-      <Button onClick={fetchHello}>Hello World</Button>
-      <Button onClick={fetchTicket}>Fetch Ticket</Button>
-      <Button onClick={createTicket}>Create Ticket</Button>
+    <div style={{ height: window.innerHeight, display: 'flex', flexDirection: 'column'}}>
+      <div>
+        <Button onClick={fetchHello}>Hello World</Button>
+        <Button onClick={fetchTicket}>Fetch Ticket</Button>
+        <Button onClick={createTicket}>Create Ticket</Button>
+      </div>
+      <Input placeholder="Name" />
+      <Form>
+        <TextArea placeholder='Description' />
+      </Form>
+
     </div>
   );
 }
